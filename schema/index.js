@@ -11,6 +11,7 @@ const {
 const Movie = require('../models/movie')
 const Director = require('../models/director')
 
+// 各Typeを以下に置き換えたいが循参参照が発生している為不可…
 // const MovieType = require('../types/movie')
 // const DirectorType = require('../types/director')
 
@@ -58,6 +59,7 @@ const DirectorType = new GraphQLObjectType({
   })
 })
 
+// データ抽出方法
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -98,6 +100,7 @@ const RootQuery = new GraphQLObjectType({
   }
 })
 
+// データ変更方法
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
