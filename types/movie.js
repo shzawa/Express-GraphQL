@@ -6,7 +6,6 @@ const {
 } = graphql
 
 const Director = require('../models/director')
-const DirectorType = require('./director')
 
 module.exports = new GraphQLObjectType({
   name: 'Movie',
@@ -21,7 +20,7 @@ module.exports = new GraphQLObjectType({
       type: GraphQLString
     },
     director: {
-      type: DirectorType,
+      type: new require('./director'),
       resolve(parent, args) {
         return Director.findById(parent.directorId)
       }

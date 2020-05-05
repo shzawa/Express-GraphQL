@@ -11,53 +11,8 @@ const {
 const Movie = require('../models/movie')
 const Director = require('../models/director')
 
-// 各Typeを以下に置き換えたいが循参参照が発生している為不可…
-// const MovieType = require('../types/movie')
-// const DirectorType = require('../types/director')
-
-const MovieType = new GraphQLObjectType({
-  name: 'Movie',
-  fields: () => ({
-    id: {
-      type: GraphQLID
-    },
-    name: {
-      type: GraphQLString
-    },
-    genre: {
-      type: GraphQLString
-    },
-    director: {
-      type: DirectorType,
-      resolve(parent, args) {
-        return Director.findById(parent.directorId)
-      }
-    }
-  })
-})
-
-const DirectorType = new GraphQLObjectType({
-  name: 'Director',
-  fields: () => ({
-    id: {
-      type: GraphQLID
-    },
-    name: {
-      type: GraphQLString
-    },
-    age: {
-      type: GraphQLInt
-    },
-    movies: {
-      type: new GraphQLList(MovieType),
-      resolve(parent, args) {
-        return Movie.find({
-          directorId: parent.id
-        })
-      }
-    }
-  })
-})
+const MovieType = require('../types/movie')
+const DirectorType = require('../types/director')
 
 // データ抽出方法
 const RootQuery = new GraphQLObjectType({

@@ -9,8 +9,6 @@ const {
 
 const Movie = require('../models/movie')
 
-const MovieType = require('./movie')
-
 module.exports = new GraphQLObjectType({
   name: 'Director',
   fields: () => ({
@@ -24,7 +22,7 @@ module.exports = new GraphQLObjectType({
       type: GraphQLInt
     },
     movies: {
-      type: new GraphQLList(MovieType),
+      type: new GraphQLList(new require('./movie')),
       resolve(parent, args) {
         return Movie.find({
           directorId: parent.id
