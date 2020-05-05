@@ -1,11 +1,10 @@
-const graphql = require('graphql')
 const {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
   GraphQLInt,
   GraphQLList,
-} = graphql
+} = require('graphql')
 
 const Movie = require('../models/movie')
 

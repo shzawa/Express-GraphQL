@@ -1,9 +1,8 @@
-const graphql = require('graphql')
 const {
   GraphQLObjectType,
   GraphQLID,
   GraphQLString,
-} = graphql
+} = require('graphql')
 
 const Director = require('../models/director')
 
