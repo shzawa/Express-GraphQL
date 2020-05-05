@@ -8,11 +8,11 @@ const {
   GraphQLNonNull
 } = require('graphql')
 
-const Movie = require('../models/movie')
-const Director = require('../models/director')
+const Movie = require('./models/movie')
+const MovieType = require('./types/movie')
 
-const MovieType = require('../types/movie')
-const DirectorType = require('../types/director')
+const Director = require('./models/director')
+const DirectorType = require('./types/director')
 
 // データ抽出方法
 const RootQuery = new GraphQLObjectType({
