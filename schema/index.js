@@ -136,7 +136,7 @@ const Mutation = new GraphQLObjectType({
           type: GraphQLString
         },
         directorId: {
-          type: GraphQLInt
+          type: GraphQLID
         }
       },
       resolve(parent, args) {
