@@ -1,8 +1,10 @@
 const {
   GraphQLSchema
 } = require('graphql')
+const rootQuery = require('./query')
+const rootMutation = require('./mutation')
 
 module.exports = new GraphQLSchema({
-  query: new require('./query'),
-  mutation: new require('./mutation')
+  query: rootQuery,
+  mutation: rootMutation
 })
