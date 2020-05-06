@@ -16,6 +16,12 @@ const express = require('express')
 const app = express()
 const router = require('./router')
 
+// body-parser有効化
+app.use(express.json())
+app.use(express.urlencoded({
+  extended: true
+}));
+
 app.use('/', router)
 
 app.listen(env.EXP_PORT, () => {
