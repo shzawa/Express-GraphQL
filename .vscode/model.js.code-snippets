@@ -1,0 +1,40 @@
+{
+  "Model Template": {
+    "scope": "javascript,typescript",
+    "prefix": "mod",
+    "body": [
+      "const mongoose = require('mongoose')",
+      "",
+      "const Schema = mongoose.Schema",
+      "",
+      "const ${1/(.*)/${1:/downcase}/}Schema = new Schema({",
+      "  ${2}: ${3/(.*)/${1:/capitalize}/},${0}",
+      "})",
+      "",
+      "module.exports = mongoose.model('${1/(.*)/${1:/capitalize}/}', ${1/(.*)/${1:/downcase}/}Schema)",
+      ""
+    ],
+    "description": "generate model file"
+  },
+
+  "Require Template": {
+    "scope": "javascript, typescript",
+    "prefix": "reqs",
+    "body": [
+      "const ${1/(.*)/${1:/capitalize}/} = require('../models/${1/(.*)/${1:/downcase}/}')",
+      "const ${1/(.*)/${1:/capitalize}/}Type = require('../types/${1/(.*)/${1:/downcase}/}')"
+    ],
+    "description": "require model & type"
+  },
+
+  "Resolve Template": {
+    "scope": "javascript, typescript",
+    "prefix": "rslv",
+    "body": [
+      "resolve(parent, args) {",
+      "  ${0}",
+      "},"
+    ],
+    "description": "resolve function"
+  }
+}
