@@ -1,24 +1,26 @@
 'use strict'
 
+// Controller読み込み
+const AuthController = require('./controllers/AuthController')
+const GraphiQLController = require('./controllers/GraphQLController')
+
+// 環境変数読み込み
 require('dotenv').config()
 const env = process.env
 
+// DB起動
 const mongoose = require('mongoose')
-const schema = require('./schema')
-
-const express = require('express')
-const graphqlHTTP = require('express-graphql')
-const app = express()
-
-mongoose.connect(`mongodb+srv://${env.MNG_USER}:${env.MNG_PASSWORD}@cluster0-ldjgt.mongodb.net/${env.MNG_DBNAME}?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb://localhost:27017/${env.MNG_DBNAME}`)
 mongoose.connection.once('open', () => {
   console.log('db connected')
 })
 
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true
-}))
+// Webサーバ起動
+const express = require('express')
+const app = express()
+
+app.get('/', AuthController.test)
+app.use('/graphql', GraphiQLController)
 
 app.listen(4000, () => {
   console.log('実行中 http://localhost:4000')
