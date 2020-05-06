@@ -5,7 +5,9 @@
 ### (初回のみ)
 
 1. 本リポジトリを`git clone`する
-1. `cd express-graphql`, `npm install`を実行  
+1. `cd express-graphql`, `npm install`を実行
+1. `cp .env.example .env`を実行
+1. MongoDBのWeb版でSchema作成。必要な情報をコピーして`.env`に記述
 
 ### (初回 + 初回以降)
 
