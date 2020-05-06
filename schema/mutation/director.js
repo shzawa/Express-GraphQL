@@ -20,11 +20,10 @@ module.exports = {
       }
     },
     resolve(parent, args) {
-      let director = new Director({
+      const director = new Director({
         name: args.name,
         age: args.age
       })
-
       return director.save()
     }
   },

@@ -22,7 +22,7 @@ module.exports = {
       }
     },
     resolve(_, args) {
-      let movie = new Movie({
+      const movie = new Movie({
         name: args.name,
         genre: args.genre,
         directorId: args.directorId
