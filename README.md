@@ -19,6 +19,7 @@
 テーマ「手っ取り早くGraphQLすげええええってなりたい」
 
 - APIサーバを気軽に作りたい → Expresss.js
+- そのままだと使いづらい → MVC化
 - RESTfulだとURI設計めんどくさい → GraphQL
 - RDBMSだと設計めんどくさい → NoSQL(MongoDB)
 
