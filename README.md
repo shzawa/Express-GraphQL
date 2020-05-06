@@ -16,8 +16,11 @@
 
 ## なぜ作った？
 
-- APIサーバを気軽に作りたい → Expresss
-- RESTful設計めんどくさい → GraphQL
+テーマ「手っ取り早くGraphQLすげええええってなりたい」
+
+- APIサーバを気軽に作りたい → Expresss.js
+- RESTfulだとURI設計めんどくさい → GraphQL
+- RDBMSだと設計めんどくさい → NoSQL(MongoDB)
 
 ## 利用技術
 
