@@ -5,12 +5,20 @@ const schema = require('../schema')
 
 exports.test = (req, res) => {
   let ret = []
-  graphql(schema, "{ movies { id name } }")
+  const query = `
+  {
+    movies {
+      id name
+    }
+  }
+  `
+
+  graphql(schema, query)
     .then(response => {
       ret = response.data.movies[0]
-      console.log(ret.id)
+      console.log(ret.name)
       res.json({
-        id: ret.id
+        name: ret.name
       })
     })
 }
