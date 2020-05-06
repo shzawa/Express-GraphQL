@@ -12,6 +12,11 @@
 `nodemon app`でアプリ起動  
 (localhost:4000/graphql でGraphiQL起動)
 
+## なぜ作った？
+
+- APIサーバを気軽に作りたい → Expresss
+- RESTful設計めんどくさい → GraphQL
+
 ## 利用技術
 
 package.jsonを参照
