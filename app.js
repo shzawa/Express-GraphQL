@@ -6,7 +6,7 @@ const env = process.env
 
 // DB起動
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb://localhost:27017/${env.MNG_DBNAME}`)
+mongoose.connect(`mongodb://${env.MNG_DBHOST}:${env.MNG_PORT}/${env.MNG_DBNAME}`)
 mongoose.connection.once('open', () => {
   console.log('db connected')
 })
@@ -18,6 +18,6 @@ const router = require('./router')
 
 app.use('/', router)
 
-app.listen(4000, () => {
-  console.log('実行中 http://localhost:4000')
+app.listen(env.EXP_PORT, () => {
+  console.log(`実行中 http://localhost:${env.EXP_PORT}`)
 })
