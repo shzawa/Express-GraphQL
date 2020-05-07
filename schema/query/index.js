@@ -7,6 +7,7 @@ module.exports = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
     ...require('./movie'),
-    ...require('./director')
+    ...require('./director'),
+    ...require('./user')
   }
 })

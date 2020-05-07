@@ -7,6 +7,7 @@ module.exports = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     ...require('./movie'),
-    ...require('./director')
+    ...require('./director'),
+    ...require('./user'),
   }
 })
