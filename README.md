@@ -12,7 +12,8 @@
 ### (初回 + 初回以降のデバッグ時)
 
 `nodemon app`でアプリ起動  
-(router/index.js内のコメントアウトを外して、localhost:4000/graphql でGraphiQL起動)
+(router/index.js内のコメントアウトを外してapp.jsのapp.use内のミドルウェアをnullにして、
+localhost:4000/graphql でGraphiQL起動)
 
 ## なぜ作った？
 
