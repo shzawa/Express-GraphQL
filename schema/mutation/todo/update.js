@@ -15,13 +15,13 @@ exports.Todo = {
       type: GraphQLNonNull(GraphQLID)
     },
     title: {
-      type: GraphQLNonNull(GraphQLString)
+      type: GraphQLString
     },
     isDone: {
-      type: GraphQLNonNull(GraphQLBoolean)
+      type: GraphQLBoolean
     },
     userId: {
-      type: GraphQLNonNull(GraphQLID)
+      type: GraphQLID
     }
   },
   resolve(_, args) {
