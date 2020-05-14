@@ -15,20 +15,18 @@ exports.store = async (req, res) => {
   })
 
   // emailとnameの重複チェック
-  await User.exists({
-      $or: [{
-          email: req.body.email
-        },
-        {
-          name: req.body.name
-        }
-      ]
-    })
-    .then(isExists => {
-      if (isExists) return res.status(400).send({
-        message: 'That name or email has been used.'
-      })
-    })
+  const isExists = await User.exists({
+    $or: [{
+        email: req.body.email
+      },
+      {
+        name: req.body.name
+      }
+    ]
+  })
+  if (isExists) return res.status(400).send({
+    message: 'That name or email has been used.'
+  })
 
   const user = await new User({
     hash_id: func.getUniqueStr(),
@@ -56,14 +54,12 @@ exports.login = async (req, res) => {
   })
 
   // emailでUser検索
-  await User.exists({
-      email: req.body.email
-    })
-    .then(isExists => {
-      if (!isExists) return res.status(401).send({
-        message: 'Invalid email.'
-      })
-    })
+  const isExists = await User.exists({
+    email: req.body.email
+  })
+  if (!isExists) return res.status(401).send({
+    message: 'Invalid email.'
+  })
 
   const foundUser = await User.findOne({
       email: req.body.email
@@ -72,12 +68,10 @@ exports.login = async (req, res) => {
     .exec()
 
   // ログインパスワードチェック
-  await bcrypt.compare(req.body.password, foundUser.password)
-    .then(isLogin => {
-      if (!isLogin) return res.status(401).send({
-        message: 'Login failed.'
-      })
-    })
+  const isLogined = await bcrypt.compare(req.body.password, foundUser.password)
+  if (!isLogined) return res.status(401).send({
+    message: 'Login failed.'
+  })
 
   // ログイン成功
   const updateUser = {
