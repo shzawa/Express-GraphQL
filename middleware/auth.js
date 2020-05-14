@@ -9,12 +9,15 @@ module.exports.isAuthorized = async (req, res, next) => {
 
   if (!req.headers.uid) return goBack()
 
-  User.findOne({
+  const user = await User.findOne({
       hash_id: req.headers.uid
     })
-    .exec((err, user) => {
-      if (err) return next(err)
-      if (user === null) return goBack()
-      return next()
+    .exec()
+    .catch(err => {
+      return next(err)
     })
+
+  if (user === null) return goBack()
+
+  return next()
 }
