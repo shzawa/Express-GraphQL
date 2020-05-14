@@ -6,7 +6,10 @@ const env = process.env
 
 // DB起動
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb://${env.MNG_DBHOST}:${env.MNG_PORT}/${env.MNG_DBNAME}`)
+mongoose.connect(`mongodb://${env.MNG_DBHOST}:${env.MNG_PORT}/${env.MNG_DBNAME}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 mongoose.connection.once('open', () => {
   console.log('db connected')
 })
