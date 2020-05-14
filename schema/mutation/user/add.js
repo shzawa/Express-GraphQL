@@ -24,8 +24,6 @@ exports.User = {
     },
   },
   resolve(_, args) {
-    // バリデーションするならここ？
-
     const user = new User({
       hash_id: func.getUniqueStr(),
       name: args.name,
