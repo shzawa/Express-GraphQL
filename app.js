@@ -29,18 +29,8 @@ app.use(express.text({
   type: 'application/graphql'
 }))
 
-const whitelist = ['http://localhost:8080']
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
-app.use('/', cors(corsOptions), router)
+app.use(cors())
+app.use('/', router)
 
 app.listen(env.EXP_PORT, () => {
   console.log(`実行中 http://localhost:${env.EXP_PORT}`)
