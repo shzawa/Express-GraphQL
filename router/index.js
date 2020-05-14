@@ -7,7 +7,7 @@ const router = express.Router()
 
 const auth = require('../middleware/auth')
 
-router.use('/graphql', GraphiQLController)
+// router.use('/graphql', GraphiQLController)
 router.post('/api/v1/auth/sign_up', AuthController.store)
 router.post('/api/v1/auth/sign_in', AuthController.login)
 
@@ -21,6 +21,7 @@ router.prefix('/api/v1/guarded', auth.isAuthorized, async (user) => {
   user.route('/').get(function (req, res) {
     res.status(201).send('Hello this is my personal details')
   })
+  user.route('/graphql').all(GraphiQLController)
 })
 
 module.exports = router
