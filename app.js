@@ -13,6 +13,7 @@ mongoose.connect(`mongodb://${env.MNG_DBHOST}:${env.MNG_PORT}/${env.MNG_DBNAME}`
 mongoose.connection.once('open', () => {
   console.log('db connected')
 })
+mongoose.set('useFindAndModify', false) // 参考: https://mongoosejs.com/docs/deprecations.html
 
 // Webサーバ起動
 const express = require('express')
