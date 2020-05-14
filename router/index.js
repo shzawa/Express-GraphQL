@@ -17,7 +17,7 @@ express.application.prefix = express.Router.prefix = (path, middleware, configur
   return router
 }
 
-router.prefix('/user', auth.isAuthorized, async (user) => {
+router.prefix('/api/v1/guarded', auth.isAuthorized, async (user) => {
   user.route('/').get(function (req, res) {
     res.status(201).send('Hello this is my personal details')
   })
