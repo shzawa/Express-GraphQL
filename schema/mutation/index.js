@@ -9,5 +9,6 @@ module.exports = new GraphQLObjectType({
     ...require('./movie'),
     ...require('./director'),
     ...require('./user'),
+    ...require('./todo')
   }
 })
